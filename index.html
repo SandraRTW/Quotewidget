@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Phrase de motivation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="content">
+   	<div class="quote-box">
+   		<blockquote>Chargement…</blockquote>
+   		<div>
+   		 <button  class=reset onclick="resetQuote()"><img src="reset.png"></button>
+   	  </div>
+    </div>
+      <div class="embedbtn">
+       <button onclick="embedQuote()">Intégrer</button>
+      </div>
+  </div>
+<script>
+    
+  // Array of quotes
+const quotes = [
+  "La seule limite à ton potentiel est la croyance que tu n'en as pas",
+  "Les grands champions sont formés à partir de grandes épreuves",
+  "La douleur d'aujourd'hui est la force de demain",
+  "Tout est possible si tu y crois et que tu travailles dur",
+  "La sueur d'aujourd'hui est le sourire de demain",
+  "Ne laisse jamais personne te dire que tu ne peux pas le faire",
+  "La sueur d'aujourd'hui est le sourire de demain",
+  "Ne laisse jamais personne te dire que tu ne peux pas le faire",
+  "Tu n'échoues jamais tant que tu essaies encore",
+  "Rien ne peut t'arrêter sauf toi-même",
+  "La réussite ne tombe pas du ciel, elle se gagne sur le terrain",
+  "Chaque pas te rapproche un peu plus de ton objectif",
+
+  // Add more quotes here
+];
+
+// Function to get a random quote
+function getRandomQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
+}
+
+// Function to update the quote
+function updateQuote() {
+  const quoteElement = document.querySelector(".quote-box blockquote");
+  quoteElement.textContent = getRandomQuote();
+}
+
+// Function to reset the quote
+function resetQuote() {
+  clearInterval(intervalId);
+  updateQuote();
+  intervalId = setInterval(updateQuote, 3 * 60 * 60 * 1000); // Set interval for 3 hours
+}
+
+// Initial quote update
+updateQuote();
+
+// Set interval for automatic quote update every 3 hours
+let intervalId = setInterval(updateQuote, 3 * 60 * 60 * 1000);
+
+// Function to embed the quote
+function embedQuote() {
+  const quoteElement = document.querySelector(".quote-box blockquote");
+  const quoteText = quoteElement.textContent;
+
+  const embedCode = `<blockquote>${quoteText}</blockquote>`;
+
+  // Display the embed code as an alert or customize it for your specific embedding needs
+  alert("Copy the following embed code:\n\n" + embedCode);
+}
+
+</script>
+ 	
+</body>
+</html>
