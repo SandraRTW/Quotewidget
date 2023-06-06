@@ -15,7 +15,8 @@
    	  </div>
     </div>
       <div class="embedbtn">
-       <button onclick="embedQuote()">Intégrer</button>
+       <!--<button onclick="embedQuote()">Intégrer</button>-->
+       <button id="copyUrlButton" onclick="copyUrl()">Copier l'URL</button>
       </div>
   </div>
 <script>
@@ -34,6 +35,10 @@ const quotes = [
   "Rien ne peut t'arrêter sauf toi-même",
   "La réussite ne tombe pas du ciel, elle se gagne sur le terrain",
   "Chaque pas te rapproche un peu plus de ton objectif",
+  "La sueur, la détermination et le travail acharné t'amèneront là où tu veux être",
+  "Les vrais champions ne se découragent jamais",
+  "Les vrais champions ne se découragent jamais",
+  "Les échecs ne sont que des opportunités de progresser vers la réussite",
 
   // Add more quotes here
 ];
@@ -63,16 +68,29 @@ updateQuote();
 // Set interval for automatic quote update every 3 hours
 let intervalId = setInterval(updateQuote, 3 * 60 * 60 * 1000);
 
+// function to copy the url + listener
+function copyUrl() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url)
+    .then(() => {
+      alert("URL copiée");
+    })
+    .catch((error) => {
+      console.error("Opps, quelque chose c'est mal passé: ", error);
+    });
+}
+
 // Function to embed the quote
 function embedQuote() {
   const quoteElement = document.querySelector(".quote-box blockquote");
   const quoteText = quoteElement.textContent;
 
-  const embedCode = `<blockquote>${quoteText}</blockquote>`;
+  const url = window.location.href;
+  const embedCode = `<blockquote>${quoteText}</blockquote>\n\n<em>Intégrer cette phrase <a href="${url}">${url}</a></em>`;
 
-  // Display the embed code as an alert or customize it for your specific embedding needs
   alert("Copy the following embed code:\n\n" + embedCode);
 }
+
 
 </script>
  	
