@@ -7,18 +7,22 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div class="content">
-   	<div class="quote-box">
-   		<blockquote>Chargement…</blockquote>
-   		<div>
-   		 <button  class=reset onclick="resetQuote()"><img src="reset.png"></button>
-   	  </div>
-    </div>
-      <div class="embedbtn">
-       <!--<button onclick="embedQuote()">Intégrer</button>-->
-       <button id="copyUrlButton" onclick="copyUrl()">Copier l'URL</button>
+  <div class="container">
+    <div class="content">
+      <div class="quote-box">
+        <blockquote>Chargement…</blockquote>
+          <div>
+            <button class="reset" onclick="resetQuote()"><img src="reset.png"></button>
+          </div>
       </div>
+
   </div>
+    <div class="embedbtn">
+      <!--<button onclick="embedQuote()">Intégrer</button>-->
+      <button id="copyUrlButton" onclick="copyUrl()">Copier l'URL</button>
+    </div>
+  </div>
+
 <script>
     
   // Array of quotes
